@@ -46,6 +46,7 @@ namespace InfluencerApp.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
+
             var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.password);
 
             if (userFromRepo == null)
@@ -61,7 +62,7 @@ namespace InfluencerApp.API.Controllers
                 .GetBytes(_config.GetSection("AppSettings:Token").Value));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-            
+                
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
@@ -77,6 +78,5 @@ namespace InfluencerApp.API.Controllers
                 token = tokenHandler.WriteToken(token)
             });
         }
-
     }
 }
