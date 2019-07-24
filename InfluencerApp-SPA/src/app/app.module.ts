@@ -18,7 +18,6 @@ import { MembersListsComponent } from './MembersLists/MembersLists.component';
 import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
 
-
 @NgModule({
    declarations: [
       AppComponent,

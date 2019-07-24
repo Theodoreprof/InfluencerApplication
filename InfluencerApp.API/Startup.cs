@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using InfluencerApp.API.Data;
 using InfluencerApp.API.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -35,11 +36,20 @@ namespace InfluencerApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddCors();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(opt => {
+                    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                }); 
             //Cors allow API restrict to the client, in this case the angular application
+            services.AddCors();
+            //Seed sample data to DB
+            services.AddTransient<Seed>();
+            services.AddAutoMapper();
+            services.AddScoped<ICollabRepository, CollabRepository>();
             services.AddScoped<IAuthRepository, AuthRepository>();
             //specify the interface and the concrete implementation of this(IAuthRepository)
+
+            //????********
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>{
                     options.TokenValidationParameters = new TokenValidationParameters
@@ -54,7 +64,7 @@ namespace InfluencerApp.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, Seed seeder)
         {
             if (env.IsDevelopment())
             {
@@ -77,6 +87,9 @@ namespace InfluencerApp.API
             }
 
             //app.UseHttpsRedirection();
+
+            //seeder.SeedUsers();
+            
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseMvc();
