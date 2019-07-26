@@ -18,6 +18,7 @@ namespace InfluencerApp.API.Helpers
                     opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.MainPhoto).Url);
                 });
             CreateMap<Photo, PhotosForDetails>();
+            CreateMap<UserForUpdateDto, User>();
         }
     }
 }
