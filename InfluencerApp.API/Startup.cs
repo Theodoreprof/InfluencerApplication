@@ -42,6 +42,7 @@ namespace InfluencerApp.API
                 }); 
             //Cors allow API restrict to the client, in this case the angular application
             services.AddCors();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             //Seed sample data to DB
             services.AddTransient<Seed>();
             services.AddAutoMapper();
