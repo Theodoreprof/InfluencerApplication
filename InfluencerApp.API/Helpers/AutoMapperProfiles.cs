@@ -19,6 +19,8 @@ namespace InfluencerApp.API.Helpers
                 });
             CreateMap<Photo, PhotosForDetails>();
             CreateMap<UserForUpdateDto, User>();
+            CreateMap<Photo, PhotoForReturnDto>();
+            CreateMap<PhotoForCreationDto, Photo>();
         }
     }
 }
