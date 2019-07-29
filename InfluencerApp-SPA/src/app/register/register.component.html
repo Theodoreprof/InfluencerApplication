@@ -3,9 +3,63 @@
   <hr>
 
   <div class="form-group">
+    <label class="control-label" style="margin-right:10px">I am a: </label>
+    <label class="radio-inline">
+      <input class="mr-3" type="radio" value="Influencer" formControlName="influencerOrBrand">Influencer
+    </label>
+    <label class="radio-inline ml-3">
+      <input class="mr-3" type="radio" value="Brand" formControlName="influencerOrBrand">Brand
+    </label>
+  </div>
+
+  <p>Select Category:</p>
+  <div class="form-group" >
+    <select class="custom-select"  formControlName="genres">
+      <option value="vehicles">Autos & Vehicles</option>
+      <option value="comedy">Comedy</option>
+      <option value="education">Education</option>
+      <option value="entertainment">Entertainment</option>
+      <option value="films">Film & Animation</option>
+      <option value="gaming">Gaming</option>
+      <option value="howtosyle">Howto & Style</option>
+      <option value="music">Music</option>
+      <option value="news">News & Politics</option>
+      <option value="peopleblogs">People & Blogs</option>
+      <option value="animals">Pets & Animals</option>
+      <option value="science">Science & Technology</option>
+      <option value="sports">Sports</option>
+      <option value="travelevents">Travel & Events</option>
+    </select>
+  </div>
+
+  <div class="form-group">
     <input type="text" [ngClass]="{'is-invalid': registerForm.get('username').errors && registerForm.get('username').touched}"
     class="form-control" formControlName="username" placeholder="Username">
     <div class="invalid-feedback">Please choose a username</div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('knownAs').errors && registerForm.get('knownAs').touched}" class="form-control"
+      placeholder="Known as" formControlName="knownAs">
+    <div class="invalid-feedback" *ngIf="registerForm.get('knownAs').touched && registerForm.get('knownAs').hasError('required')">Known as is required</div>
+  </div>
+
+ <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('email').errors && registerForm.get('email').touched}" class="form-control"
+      placeholder="e-mail" formControlName="email" type="email">
+    <div class="invalid-feedback" *ngIf="registerForm.get('email').touched && registerForm.get('email').hasError('required')">E-mail is required</div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('city').errors && registerForm.get('city').touched}" class="form-control"
+      placeholder="City" formControlName="city">
+    <div class="invalid-feedback" *ngIf="registerForm.get('city').touched && registerForm.get('city').hasError('required')">City is required</div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('country').errors && registerForm.get('country').touched}" class="form-control"
+      placeholder="Country" formControlName="country">
+    <div class="invalid-feedback" *ngIf="registerForm.get('country').touched && registerForm.get('country').hasError('required')">Country is required</div>
   </div>
 
   <div class="form-group">
@@ -14,7 +68,7 @@
     class="form-control" formControlName="password" placeholder="Password">
     <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched">Password is required</div>
     <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('minlength') && registerForm.get('password').touched">Password must be at least 4 characters</div>
-    <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('maxlength') && registerForm.get('password').touched">Password cannot exceed 60 characters</div>
+    <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('maxlength') && registerForm.get('password').touched">Password cannot exceed 24 characters</div>
 
   </div>
 
@@ -30,7 +84,7 @@
   </div>
 
   <div class="form-group text-center">
-    <button class="btn btn-success mr-2" type="submit">Register</button>
+    <button class="btn btn-success mr-2" [disabled]="!registerForm.valid" type="submit">Register</button>
     <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
   </div>
   
