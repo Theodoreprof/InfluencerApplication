@@ -13,6 +13,9 @@ import { Pagination, PaginatedResult } from 'src/app/_models/Pagination';
 export class MembersListsComponent implements OnInit {
   users: User[];
   pagination: Pagination;
+  user: User = JSON.parse(localStorage.getItem('user'));
+  influencerOrBrandList = [{value: 'Influencer', display: 'Influencers'}, {value: 'Brand', display: 'Brands'}];
+  userParams: any = {};
 
   constructor(private userService: UserService, private alertify: AlertifyService, private route: ActivatedRoute) { }
 
@@ -21,6 +24,7 @@ export class MembersListsComponent implements OnInit {
       this.users = data['users'].result;
       this.pagination = data['users'].pagination;
     });
+    this.userParams.influencerOrBrand = this.user.influencerOrBrand === 'influencer' ? 'brand' : 'influencer';
   }
 
   pageChanged(event: any): void {
@@ -30,7 +34,7 @@ export class MembersListsComponent implements OnInit {
 
   loadUsers() {
     this.userService
-      .getUsers(this.pagination.currentPage, this.pagination.itemsPerPage)
+      .getUsers(this.pagination.currentPage, this.pagination.itemsPerPage, this.userParams)
       .subscribe(
         (res: PaginatedResult<User[]>) => {
           this.users = res.result;

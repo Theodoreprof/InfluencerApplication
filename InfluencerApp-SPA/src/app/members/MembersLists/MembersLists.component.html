@@ -1,4 +1,21 @@
-<div class="container mt-5">
+<div class="container mt-3">
+
+        <form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
+                <div class="form-group px-2">
+                  <label for="gender">Show: </label>
+                  <select class="form-control ml-1" style="width: 130px" id="gender" 
+                  [(ngModel)]="userParams.influencerOrBrand"
+                  name="gender">
+                    <option *ngFor="let influencerOrBrand of influencerOrBrandList" [value]="influencerOrBrand.value">
+                        {{influencerOrBrand.display}}
+                    </option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-left:10px">Apply Filters</button>
+              
+              </form>
+              <br>
+
     <div class="row">
         <div *ngFor="let user of users" class="col-lg-2 col-md-3 col-sm-6">
             <app-member-card [user]="user"></app-member-card>
