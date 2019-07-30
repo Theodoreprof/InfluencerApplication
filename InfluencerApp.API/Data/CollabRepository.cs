@@ -45,7 +45,11 @@ namespace InfluencerApp.API.Data
 
         public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
-            var users = _context.Users.Include(p => p.Photos);
+            var users = _context.Users.Include(p => p.Photos).AsQueryable();
+
+            users = users.Where(u => u.Id != userParams.UserId);
+
+            users = users.Where(u => u.InfluencerOrBrand == userParams.InfluencerOrBrand);
 
             return await PagedList<User>.CreateASync(users, userParams.PageNumber, userParams.PageSize);
         }

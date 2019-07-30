@@ -10,6 +10,9 @@ namespace InfluencerApp.API.Helpers
             get { return pageSize = 25; }
             set { pageSize = (value > MaxPageSize) ? MaxPageSize : value ; }
         }
+
+        public int UserId { get; set; }
+        public string InfluencerOrBrand { get; set; }
         
     }
 }
