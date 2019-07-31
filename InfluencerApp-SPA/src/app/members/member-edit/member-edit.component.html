@@ -48,16 +48,24 @@
 
             <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
               <h3>Description</h3>
-              <textarea name="description" rows="6" class="form-control" [(ngModel)]="user.description"></textarea>
-              <h3>Genres</h3>
-              <textarea name="genres" rows="6" class="form-control" [(ngModel)]="user.genres"></textarea>
+              <textarea name="description" rows="6" class="form-control" [(ngModel)]="user.description"></textarea><br>
               <h3>location details</h3>
               <div class="form-inline">
                 <label for="city">City</label>
                 <input class="form-control" type="text" name="city" [(ngModel)]="user.city">
                 <label for="country">Country</label>
                 <input class="form-control" type="text" name="country" [(ngModel)]="user.country">
-              </div>
+              </div><br>
+              <h3>Category</h3>
+                <input class="form-control" type="text" name="genres" [(ngModel)]="user.genres"><br>
+              <label for="youtubeChannelLink">Youtube Channel URL</label>
+                <input class="form-control" type="text" name="youtubeChannelLink" [(ngModel)]="user.youtubeChannelLink">
+                <label for="facebookProfileLink">Facebook Profile URL</label>
+                <input class="form-control" type="text" name="facebookProfileLink" [(ngModel)]="user.facebookProfileLink">
+                <label for="instagramProfileLink">Instagram Profile URL</label>
+                <input class="form-control" type="text" name="instagramProfileLink" [(ngModel)]="user.instagramProfileLink">
+                <label for="twitterProfileLInk">Twitter Profile URL</label>
+                <input class="form-control" type="text" name="twitterProfileLInk" [(ngModel)]="user.twitterProfileLInk">
             </form>
             
             </tab>

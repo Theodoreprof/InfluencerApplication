@@ -32,6 +32,7 @@ export class MemberDetailsComponent implements OnInit {
         }
     ];
     this.galleryImages = this.getImages();
+    this.CheckLinks();
   }
 
   getImages(){
@@ -44,6 +45,13 @@ export class MemberDetailsComponent implements OnInit {
       });
     }
     return imageUrls;
+  }
+
+  CheckLinks() {
+    if ((this.user.youtubeChannelLink && this.user.twitterProfileLInk
+      && this.user.instagramProfileLink && this.user.facebookProfileLink) === null) {
+      return true;
+    }
   }
 
 }

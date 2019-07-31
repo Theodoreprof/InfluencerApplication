@@ -14,8 +14,8 @@ export interface User {
     description?: string;
     influencerOrBrand?: string;
     photos?: Photo[];
-    // instagramProfileLink?: string;
-    // facebookProfileLink?: string;
-    // youtubeChannelLink?: string;
-    // twitterProfileLink?: string;
+    instagramProfileLink?: string;
+    facebookProfileLink?: string;
+    youtubeChannelLink?: string;
+    twitterProfileLInk?: string;
 }
