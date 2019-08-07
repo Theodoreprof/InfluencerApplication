@@ -24,6 +24,8 @@ namespace InfluencerApp.API.Models
         public string YoutubeChannelLink { get; set; }
         public string FacebookProfileLink { get; set; }
         public string TwitterProfileLInk { get; set; }
+        public ICollection<Like> Likers { get; set; }
+        public ICollection<Like> Likees { get; set; }
         
     }
 }

@@ -13,6 +13,8 @@ namespace InfluencerApp.API.Helpers
 
         public int UserId { get; set; }
         public string InfluencerOrBrand { get; set; }
+        public bool Likees { get; set; } = false;
+        public bool Likers { get; set; } = false;
         
     }
 }
