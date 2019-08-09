@@ -3,14 +3,16 @@ using System;
 using InfluencerApp.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace InfluencerApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20190808070406_AddedMessageEntity")]
+    partial class AddedMessageEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,13 +50,13 @@ namespace InfluencerApp.API.Migrations
 
                     b.Property<bool>("SenderDeleted");
 
-                    b.Property<int>("SenderId");
+                    b.Property<int>("Senderid");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RecipientId");
 
-                    b.HasIndex("SenderId");
+                    b.HasIndex("Senderid");
 
                     b.ToTable("Messages");
                 });
@@ -157,7 +159,7 @@ namespace InfluencerApp.API.Migrations
 
                     b.HasOne("InfluencerApp.API.Models.User", "Sender")
                         .WithMany("MessagesSent")
-                        .HasForeignKey("SenderId")
+                        .HasForeignKey("Senderid")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
