@@ -104,10 +104,10 @@ namespace InfluencerApp.API.Data
                 case "Inbox":
                     messages = messages.Where(u => u.RecipientId == messageParams.UserId);
                     break;
-                    case "Outbox":
+                case "Outbox":
                     messages = messages.Where(u => u.Senderid == messageParams.UserId);
                     break;
-                    default:
+                default:
                     messages = messages.Where(u => u.RecipientId == messageParams.UserId && u.IsRead == false);
                     break;
             }

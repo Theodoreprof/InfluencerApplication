@@ -1,7 +1,6 @@
 import {Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MembersListsComponent } from './members/MembersLists/MembersLists.component';
-import { MessagesComponent } from './messages/messages.component';
 import { ListsComponent } from './lists/lists.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { MemberDetailsComponent } from './members/memberDetails/memberDetails.component';
@@ -11,6 +10,7 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { ListsResolver } from './_resolvers/lists.resolver';
+import { MessagesComponent } from './messages/messages.component';
 
 
 export const appRoutes: Routes = [

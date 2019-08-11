@@ -16,7 +16,6 @@ import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify.service';
 import { ListsComponent } from './lists/lists.component';
-import { MessagesComponent } from './messages/messages.component';
 import { MembersListsComponent } from './members/MembersLists/MembersLists.component';
 import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
@@ -30,6 +29,7 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { ListsResolver } from './_resolvers/lists.resolver';
+import { MessagesComponent } from './messages/messages.component';
 
 
 export function tokenGetter() {
