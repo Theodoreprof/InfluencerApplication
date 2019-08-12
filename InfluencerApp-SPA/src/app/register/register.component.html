@@ -93,6 +93,8 @@
 
   </div>
 
+  Form status: <div *ngIf="!registerForm.valid" class="invalidform">{{registerForm.status}}</div><div *ngIf="registerForm.valid" class="validform">{{registerForm.status}}</div>
+
   <div class="form-group text-center">
     <button class="btn btn-success mr-2" [disabled]="!registerForm.valid" type="submit">Register</button>
     <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
@@ -100,5 +102,3 @@
   
 </form>
 
-<p>Form value: {{registerForm.value | json}}</p>
-<p>Form status: {{registerForm.status | json}}</p>

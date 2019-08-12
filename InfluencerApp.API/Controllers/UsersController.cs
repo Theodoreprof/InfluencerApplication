@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InfluencerApp.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]

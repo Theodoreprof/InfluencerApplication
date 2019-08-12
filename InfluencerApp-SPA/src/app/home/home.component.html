@@ -1,10 +1,13 @@
 <div class="container mt-5">
   <div *ngIf="!registerMode" style="text-align: center">
-    <h1>Sample</h1>
-    <p class="lead">Something to say........bla bla bla</p>
+    <h2>Welcome to the internet!</h2>
+    <br>
+    <h3>Step 1: Create your account</h3><br>
+    <h3>Step 2: Edit your profile</h3><br>
+    <h3>Final step: Get socialized</h3><br>
+    <h3></h3>
     <div class="text-center">
-      <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()">Register</button>
-      <button class="btn btn-info btn-lg">Learn more</button>
+      <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()" *ngIf="!loggedIn()">Register</button>
     </div>
   </div>
 
